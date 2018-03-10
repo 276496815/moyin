@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/cover/index",
+    "pages/index/index",
+    "pages/main/index",
+    "pages/list/index",
+    "pages/finish/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "魔音",
+    "navigationBarTextStyle":"white"
+  }
+}

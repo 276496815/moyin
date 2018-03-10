@@ -1,0 +1,60 @@
+<view class="wrap page_make">
+  <view class="top_bar">
+
+    <view class="song_intro song_intro__sp">
+      <rich-text type="h2" class="song_title">难忘今宵</rich-text>
+      <rich-text type="p" class="song_player">表演者：赵四</rich-text>    
+      <view class="play_btn">
+      <view class="play_btn_ic"></view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="change_handle">
+       <button class="mod_btn change_btn">更换歌曲</button>
+    </view>
+
+  <view class="make_content">
+    <view class="make_content__bg"></view>
+    <button class="disc_action">开始合成</button>        
+    <view class="disc">
+        <view class="disc_cont">
+            <view class="disc_pie">
+                <view class="disc_pie__inner">
+                    <view class="disc_pie__ic"></view>
+                </view>
+            </view>
+
+          <view class="disc_pie">
+              <view class="disc_pie__inner">
+                  <view class="disc_pie__ic"></view>
+              </view>
+          </view>
+
+          <view class="disc_pie">
+              <view class="disc_pie__inner">
+                  <view class="disc_pie__ic"></view>
+              </view>
+          </view>
+
+          <view class="disc_pie"> 
+              <view class="disc_pie__inner">
+                  <view class="disc_pie__ic"></view>
+              </view>
+          </view>
+
+          <view class="disc_pie">
+              <view class="disc_pie__inner">
+                  <view class="disc_pie__ic"></view>
+              </view>
+          </view>
+
+        </view>
+    </view>
+  </view>
+
+
+    
+
+</view>

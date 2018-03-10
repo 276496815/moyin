@@ -1,0 +1,21 @@
+<view class="wrap wrap_finish">
+  <view class="main">
+    <view class="top_preview">
+      <image src="" class="top_preview__pic"/>
+      <view class="switch_cover">更改封面</view>
+    </view>
+
+    <view class="song_intro">
+      <rich-text type="h2" class="song_title">难忘今宵</rich-text>
+      <rich-text type="p" class="song_player">表演者：赵四</rich-text>    
+      <view class="play_btn">
+      <view class="play_btn_ic"></view>
+      </view>
+    </view>
+  </view>
+  <view class="user_my_action">
+      <button class="mod_btn share_btn" open-type="share">分享给好友</button>
+      <view class="text_btn remake_btn" bindtab="backToMain">重新合成</view>
+  </view>
+
+</view>

@@ -1,0 +1,3 @@
+<view class="wrap">
+  <view class="welcome" bindtap="onToIndex"></view>
+</view>
