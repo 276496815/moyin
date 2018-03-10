@@ -1,17 +1,17 @@
 <view class="wrap">
   <view class="song_list">
 
-    <view class="song_item">
+    <view class="song_item" wx:for="{{ list }}">
       <view class="song_item__album">
         <image class="sont_item__album_pic" src="http://y.gtimg.cn/music/photo_new/T002R300x300M000000bx8mM3otnEd.jpg?max_age=2592000"></image>
         <view class="play_btn"></view>
       </view>
       <view class="song_item__con">
         <view class="song_item__detail">
-            <rich-text type="h3" class="song_item__tit">以父之名</rich-text>
-            <rich-text type="p" class="song_item__artist">周杰伦</rich-text>
+            <rich-text type="h3" class="song_item__tit">{{ item.album }}</rich-text>
+            <rich-text type="p" class="song_item__artist">{{ item.song }}</rich-text>
         </view>
-        <button class="mod_btn select_btn" bindtap="backToMain">选择</button>
+        <button class="mod_btn select_btn" data- bindtap="chooseSong">选择</button>
       </view>
     </view>
   </view>

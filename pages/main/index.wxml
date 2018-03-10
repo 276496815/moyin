@@ -3,56 +3,28 @@
 
     <view class="song_intro song_intro__sp">
       <rich-text type="h2" class="song_title">难忘今宵</rich-text>
-      <rich-text type="p" class="song_player">表演者：赵四</rich-text>    
+      <rich-text type="p" class="song_player">表演者：赵四</rich-text>
       <view class="play_btn"></view>
     </view>
   </view>
 
-
   <view class="change_handle">
-       <button class="mod_btn change_btn" bindtap="onChangeSong">更换歌曲</button>
-    </view>
-
-  <view class="make_content">
-    <view class="make_content__bg make_content__bg--dog"></view>
-    <button class="disc_action" bindtap="onCompound">开始合成</button>        
-    <view class="disc">
-        <view class="disc_cont">
-            <view class="disc_pie">
-                <view class="disc_pie__inner">
-                    <view class="disc_pie__ic">拆迁主任</view>
-                </view>
-            </view>
-
-          <view class="disc_pie">
-              <view class="disc_pie__inner">
-                  <view class="disc_pie__ic">喵小姐</view>
-              </view>
-          </view>
-
-          <view class="disc_pie">
-              <view class="disc_pie__inner">
-                  <view class="disc_pie__ic">瓜娃儿子</view>
-              </view>
-          </view>
-
-          <view class="disc_pie"> 
-              <view class="disc_pie__inner">
-                  <view class="disc_pie__ic">鞭炮君</view>
-              </view>
-          </view>
-
-          <view class="disc_pie">
-              <view class="disc_pie__inner">
-                  <view class="disc_pie__ic">上传音乐</view>
-              </view>
-          </view>
-
-        </view>
-    </view>
+    <button class="mod_btn change_btn" bindtap="onChangeSong">更换歌曲</button>
   </view>
 
-
-    
-
+  <view class="make_content">
+    <view class="make_content__bg make_content__bg--dog" style="background-image:url({{ bgImg }})">
+      <rich-text class="make_record__count" type="p">3</rich-text>
+    </view>
+    <button class="disc_action" bindtap="onCompound">开始合成</button>
+    <view class="disc" catch:touchstart="touchstart" catch:touchmove="touchmove" catch:touchend="touchend">
+      <view class="disc_cont">
+        <view class="disc_pie" wx:for="{{ list }}">
+          <view class="disc_pie__inner">
+            <view class="disc_pie__ic">{{ item.title }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
