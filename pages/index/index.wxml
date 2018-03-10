@@ -1,27 +1,25 @@
-<view class="wrap">
-  <view class="main">
-    <swiper indicator-dots="{{indicatorDots}}" next-margin="{{nextMargin}}" previous-margin="{{previousMargin}}"
-      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swipe_box">
-      <block wx:for="{{imgUrls}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide_image"/>
-        </swiper-item>
-      </block>
-    </swiper>
+<!--index.wxml-->
+<view wx:if="{{loaded == 'success'}}" class="wrap">
+    <view class="main">
+        <swiper indicator-dots="ture" indicator-color="rgba(255, 255, 255, 0.3)" indicator-active-color="#fff" next-margin="55rpx" previous-margin="55rpx" duration="500" class="mod-swiper" bindchange="onSwiperChange" class="swipe_box">
+        <block wx:for="{{songlist}}" wx:for-index="idx" wx:for-item="item">
+            <swiper-item>
+              <image src="{{item.imgUrl}}" class="slide_image"/>
+            </swiper-item>
+        </block>
+        </swiper>
+        <view class="song_intro">
+          <rich-text type="h2" class="song_title">{{title}}</rich-text>
+          <rich-text type="p" class="song_player">表演者：{{subtitle}}</rich-text>    
+          <view class="play_btn" bindtap="onTapToPlaySong" data-index="{{idx}}">
+          <view class="play_btn_ic"></view>
+          </view>
+        </view>
 
-    <view class="song_intro">
-      <rich-text type="h2" class="song_title">难忘今宵</rich-text>
-      <rich-text type="p" class="song_player">表演者：赵四</rich-text>    
-      <view class="play_btn">
-      <view class="play_btn_ic"></view>
-      </view>
     </view>
-  </view>
-
-
     <view class="user_handle">
        <button class="mod_btn invite_btn" open-type="share">邀请好友玩</button>
-       <button class="mod_btn fun_btn" bindtap="onToMain">玩一把</button>
+       <button class="mod_btn fun_btn" bindtap="onTapToCreateMyWork">玩一把</button>
     </view>
-
 </view>
+ 
