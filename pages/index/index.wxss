@@ -15,10 +15,6 @@ page{background:#303030;}
 .user_handle{display:flex;flex-direction:row;justify-content:space-between;margin-bottom:40rpx;}
 .mod_btn{display:block;border-radius:99rpx;width:280rpx;height:90rpx;line-height:90rpx;font-size:36rpx;color:#f2b536;border:1px solid;background:none;margin:0;}
 
-
-
-
-
 .userinfo {
   display: flex;
   flex-direction: column;

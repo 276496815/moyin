@@ -22,8 +22,7 @@ const request = (options, handler) => {
     wx.request({
         url: options.url,
         data: param,
-        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        // header: {}, // 设置请求的 header
+        method: 'GET',
         success: function (res) {
             console.log(res);
             if (res && res.statusCode == 200) {

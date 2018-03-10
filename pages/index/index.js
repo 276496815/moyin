@@ -172,16 +172,5 @@ Page({
         console.log('trigger pause');
         this.audioCtx.pause();
       }
-        // if (e.target.dataset.state == 'play') {
-        //     wx.showLoading({
-        //         title: '加载中'
-        //     });
-        //     console.log('trigger play');
-        //     this.audioCtx.play(this.data.songlist[e.target.dataset.index].song);
-        // } else {
-        //     console.log('trigger pause');
-        //     this.audioCtx.pause();
-        // }
-
     }
 })
