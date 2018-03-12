@@ -1,6 +1,31 @@
 //page.js
 let AudioPlayer = require('../../utils/player.js');
 let AjaxController = require('../../utils/ajax.js');
+
+var songNameMap = {
+    '0' : '圣诞歌',
+    '1' : '周大侠',
+    '2' : '有点甜',
+    '3' : '霍元甲',
+    '4' : '童话镇'
+}
+
+var singerMap = {
+    '0' : '拆迁主任',
+    '1' : '喵小姐',
+    '2' : '瓜娃儿子',
+    '3' : '鞭炮君',
+    '10' : '用户大大'
+}
+
+var imgMap = {
+    '0' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000002iRNhk0KUxKV.png',
+    '1' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000002k2Xg43wKoz5.png',
+    '2' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000001oVfmH29amJz.png',
+    '3' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000000ITfqz0gjtaY.png',
+    '10' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000000KABPE0YQWks.png'
+}
+
 Page({
     data: {
         loaded: false,
@@ -13,54 +38,28 @@ Page({
     getData: function () {
         let that = this;
         AjaxController.request({
-            url: 'https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg',
+            url: 'https://cd.y.qq.com/shop/fcgi-bin/fcg_moyin_get',
             param: {
-                is_xml: 0,
-                key: ''
+                cmd: 'list',
+                format: 'json',
+                inChartset: 'utf-8',
+                outChart: 'utf-8'
             }
         }, (err, r) => {
-            if (!err) {
-                let songlist = [{
-                        title: '旅行的意义',
-                        subtitle: '呱蛙儿子',
-                        imgUrl: 'https://p.qpic.cn/music_cover/OmT4ibflJ4UHdpVjIJM6iaMMHWNib2iaqAJIpkiaZwM1YCJpKK8JNy6ic0aw/300?n=1',
-                        versionImgUrl: '../../resource/image/frog.png',
+            if (!err && r && r.code == 0) {
+                console.log(r.data);
+                // 
+                let songlist = r.data.data.map(function (item) {
+                    return {
+                        title: songNameMap[item.bgm],
+                        subtitle: singerMap[item.tone],
+                        imgUrl: imgMap[item.tone],
                         song: {
-                            id: 0,
-                            url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=4'
-                        }
-                    },
-                    {
-                        title: '旅行的意义',
-                        subtitle: '招财猫',
-                        imgUrl: 'https://p.qpic.cn/music_cover/y0Elj3m25QhKsCrLguvkxicxDkicjQOn4PUp0BqCf9L0PjGqSgo2uBvw/300?n=1&max_age=2592000',
-                        versionImgUrl: '../../resource/image/frog.png',
-                        song: {
-                            id: 1,
-                            url: 'http://ws1.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=4'
-                        }
-                    },
-                    {
-                        title: '新年好',
-                        subtitle: '呱蛙儿子',
-                        imgUrl: 'https://p.qpic.cn/music_cover/llTQ9l2AeicK2OLIORnsUdqg9HGYEh1HMSPYPx3IiaIiant4Go0DPxJMg/300?n=1&max_age=2592000',
-                        versionImgUrl: '../../resource/image/frog.png',
-                        song: {
-                            id: 2,
-                            url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=4'
-                        }
-                    },
-                    {
-                        title: '新年好',
-                        subtitle: '招财猫',
-                        imgUrl: 'https://p.qpic.cn/music_cover/eO9YLkEHAnz3gntq1uUDL3hdkNc0eIyAhQmricRics1f8A76yzpk6Jwg/300?n=1',
-                        versionImgUrl: '../../resource/image/frog.png',
-                        song: {
-                            id: 3,
-                            url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=4'
+                            url: item.url
                         }
                     }
-                ];
+                });
+
                 let first = songlist && songlist[0];
                 if (first) {
                     that.setData({
@@ -76,11 +75,6 @@ Page({
                     that.setData({
                         loaded: 'empty'
                     });
-                    require('../../utils/util.js').getUserInfo((userInfo) => {
-                        that.setData({
-                            userInfo: userInfo
-                        })
-                    })
                 }
             } else {
                 that.setData({
