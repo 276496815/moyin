@@ -4,7 +4,7 @@ const recorderManager = wx.getRecorderManager()
 
 const options = {
     // 录音时间
-    duration: 3000,
+    duration: 1000,
     // 采样率
     sampleRate: 44100,
     // 录音通道
@@ -18,7 +18,7 @@ const options = {
 module.exports = {
     start: (cb) => {
         // 回调文件
-        recorderManager.onFrameRecorded((res) => {
+        recorderManager.onStop((res) => {
             cb(res);
         });
         recorderManager.start(options);
