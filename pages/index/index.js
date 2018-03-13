@@ -19,11 +19,11 @@ var singerMap = {
 }
 
 var imgMap = {
-    '0' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000002iRNhk0KUxKV.png',
-    '1' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000002k2Xg43wKoz5.png',
-    '2' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000001oVfmH29amJz.png',
-    '3' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000000ITfqz0gjtaY.png',
-    '10' : 'http://y.gtimg.cn/music/photo_new/T011R636x714M000000KABPE0YQWks.png'
+    '0' : 'dog',
+    '1' : 'cat',
+    '2' : 'frog',
+    '3' : 'fire',
+    '10' : 'exper'
 }
 
 Page({
@@ -53,7 +53,7 @@ Page({
                     return {
                         title: songNameMap[item.bgm],
                         subtitle: singerMap[item.tone],
-                        imgUrl: imgMap[item.tone],
+                        img: imgMap[item.tone],
                         song: {
                             url: item.url
                         }

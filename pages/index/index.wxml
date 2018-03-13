@@ -4,7 +4,7 @@
         <swiper indicator-dots="ture" indicator-color="rgba(255, 255, 255, 0.3)" indicator-active-color="#fff" next-margin="55rpx" previous-margin="55rpx" duration="500" class="mod-swiper" bindchange="onSwiperChange" class="swipe_box">
         <block wx:for="{{songlist}}" wx:for-index="idx" wx:for-item="item">
             <swiper-item>
-              <image src="{{item.imgUrl}}" class="slide_image"/>
+                <view class="slide_mbg slide_mbg--{{item.img}}"></view> 
             </swiper-item>
         </block>
         </swiper>
