@@ -33,18 +33,30 @@ Page({
         currentSongInfo: {
             index: 0,
             state: 'pause'
-        }
+        },
+        id: ''
     },
-    getData: function () {
-        let that = this;
-        AjaxController.request({
-            url: 'https://cd.y.qq.com/shop/fcgi-bin/fcg_moyin_get',
-            param: {
+    getData: function (opt) {
+        let that = this,
+            obj = {
                 cmd: 'list',
                 format: 'json',
                 inChartset: 'utf-8',
                 outChart: 'utf-8'
-            }
+            };
+
+        if (opt.id) {
+            obj.id = opt.id;
+            that.setData({
+                id: obj.id
+            });
+        }
+
+        console.log(obj);
+
+        AjaxController.request({
+            url: 'https://cd.y.qq.com/shop/fcgi-bin/fcg_moyin_get',
+            param: obj  
         }, (err, r) => {
             if (!err && r && r.code == 0) {
                 console.log(r.data);
@@ -84,7 +96,7 @@ Page({
 
         })
     },
-    onLoad: function () {
+    onLoad: function (opt) {
         // 版本判断
         var deviceInfo = wx.getSystemInfoSync();
         if (!deviceInfo.SDKVersion || deviceInfo.SDKVersion <= '1.9.0') {
@@ -94,7 +106,7 @@ Page({
             });
             return;
         }
-        this.getData();
+        this.getData(opt);
     },
     onSwiperChange: function (current) {
         if (current && current.detail) {
@@ -115,7 +127,7 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '来听听这里的魔音吧~~',
-            path: '../playsong/page?songid=' + this.options.songid
+            path: '/pages/index/index' + (this.data.id ? '?id=' + this.data.id : '')
         }
     },
     onTapToInviteFriend: function () { },

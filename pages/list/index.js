@@ -12,7 +12,7 @@ Page({
         }, {
             id: 2,
             album: '万有引力',
-            song: '汪苏泷',
+            song: '有点甜',
             img: 'https://y.gtimg.cn/music/photo/album_300/74/300_albumpic_121274_0.jpg',
             src: 'https://dl.stream.qqmusic.qq.com/C100001bdYk41BCfRi.m4a?fromtag=38',
         }, {

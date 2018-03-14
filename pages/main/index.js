@@ -1,7 +1,7 @@
 import recorder from '../../utils/recorder.js'
 import AudioPlayer from '../../utils/player.js'
 import file from '../../utils/file.js'
-
+import AjaxController from '../../utils/ajax'
 let start, end, recordFile, player;
 Page({
     data: {
@@ -33,7 +33,7 @@ Page({
             title: '鞭炮君',
             img: 'https://y.gtimg.cn/music/photo_new/T011R640x800M000001ndTAx1yAimG.png'
         }, {
-            id: 4,
+            id: 10,
             title: '上传音乐',
             img: 'https://y.gtimg.cn/music/photo_new/T011R640x800M000001oJRb50joel5.png'
         }]
@@ -49,7 +49,8 @@ Page({
                 if (res.data) {
                     that.setData({
                         song: res.data.src,
-                        songname: res.data.song
+                        songname: res.data.song,
+                        songid: res.data.id
                     })
                 }
             } 
@@ -76,13 +77,41 @@ Page({
             url: '../list/index'
         })
     },
-
+    
     merge() {
         wx.showLoading({
             title: '正在合成中',
         });
+        let that = this;
+        console.log(that.data.songid);
+        console.log(that.data.list[2].id);
         setTimeout(function () {
             wx.hideLoading();
+            AjaxController.request({
+                url: 'https://cd.y.qq.com/shop/fcgi-bin/fcg_moyin_get',
+                param: {
+                    cmd: 'getugc',
+                    tone: that.data.list[2].id,
+                    bgm: that.data.songid,
+                    format: 'json',
+                    inChartset: 'utf-8',
+                    outChart: 'utf-8'
+                }
+            }, (err, r) => {
+                if (!err && r && r.code == 0) {
+                    console.log(r.data.data[0]);
+                    // 
+                    wx.navigateTo({
+                        url: '../index/index?id=' + r.data.data[0].id
+                    })
+                    
+                } else {
+                    that.setData({
+                        loaded: 'error'
+                    });
+                }
+
+            })
         }, 3000);
     },
 
