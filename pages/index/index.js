@@ -3,27 +3,27 @@ let AudioPlayer = require('../../utils/player.js');
 let AjaxController = require('../../utils/ajax.js');
 
 var songNameMap = {
-    '0' : '圣诞歌',
-    '1' : '周大侠',
-    '2' : '有点甜',
-    '3' : '霍元甲',
-    '4' : '童话镇'
+    '0': '圣诞歌',
+    '1': '周大侠',
+    '2': '有点甜',
+    '3': '霍元甲',
+    '4': '童话镇'
 }
 
 var singerMap = {
-    '0' : '拆迁主任',
-    '1' : '喵小姐',
-    '2' : '瓜娃儿子',
-    '3' : '鞭炮君',
-    '10' : '用户大大'
+    '0': '拆迁主任',
+    '1': '喵小姐',
+    '2': '瓜娃儿子',
+    '3': '鞭炮君',
+    '10': '用户大大'
 }
 
 var imgMap = {
-    '0' : 'dog',
-    '1' : 'cat',
-    '2' : 'frog',
-    '3' : 'fire',
-    '10' : 'exper'
+    '0': 'dog',
+    '1': 'cat',
+    '2': 'frog',
+    '3': 'fire',
+    '10': 'exper'
 }
 
 Page({
@@ -31,8 +31,8 @@ Page({
         loaded: false,
         songlist: [],
         currentSongInfo: {
-          index: 0,
-          state: 'pause'
+            index: 0,
+            state: 'pause'
         }
     },
     getData: function () {
@@ -104,8 +104,8 @@ Page({
                 title: songInfo.title,
                 subtitle: songInfo.subtitle,
                 currentSongInfo: {
-                  index: index,
-                  state: 'pause'
+                    index: index,
+                    state: 'pause'
                 }
             });
             this.audioCtx.pause();
@@ -118,7 +118,7 @@ Page({
             path: '../playsong/page?songid=' + this.options.songid
         }
     },
-    onTapToInviteFriend: function () {},
+    onTapToInviteFriend: function () { },
     onTapToCreateMyWork: function () {
         wx.navigateTo({
             url: '../main/index'
@@ -137,34 +137,22 @@ Page({
                 });
             }
             that.data.currentSongInfo.state = eventName == 'play' ? 'play' : 'pause';
-            // that.data.songlist.forEach(item => {
-            //     if (item.song.id == songData.info.id) {
-            //         if (eventName == 'play') {
-            //             item.song._state = 'play';
-            //         } else {
-            //             item.song._state = 'pause';
-            //         }
-            //     } else {
-            //         item.song._state = 'pause';
-            //     }
-
-            // });
             that.setData(that.data);
 
         }));
     },
     onTapToPlaySong: function (e) {
-      let currentSong = this.data.currentSongInfo;
-      if (currentSong.state == 'pause') {
-        wx.showLoading({
-            title: '加载中'
-        });
-        console.log('trigger play');
-        console.log(this.data.songlist[currentSong.index].song);
-        this.audioCtx.play(this.data.songlist[currentSong.index].song);
-      } else {
-        console.log('trigger pause');
-        this.audioCtx.pause();
-      }
+        let currentSong = this.data.currentSongInfo;
+        if (currentSong.state == 'pause') {
+            wx.showLoading({
+                title: '加载中'
+            });
+            console.log('trigger play');
+            console.log(this.data.songlist[currentSong.index].song);
+            this.audioCtx.play(this.data.songlist[currentSong.index].song);
+        } else {
+            console.log('trigger pause');
+            this.audioCtx.pause();
+        }
     }
 })

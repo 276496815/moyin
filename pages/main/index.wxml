@@ -2,9 +2,9 @@
   <view class="top_bar">
 
     <view class="song_intro song_intro__sp">
-      <rich-text type="h2" class="song_title">难忘今宵</rich-text>
-      <rich-text type="p" class="song_player">表演者：赵四</rich-text>
-      <view class="play_btn"></view>
+      <rich-text type="h2" class="song_title">{{songname}}</rich-text>
+      <rich-text type="p" class="song_player">背景音乐</rich-text>
+      <view class="play_btn" bindtap="onTapToPlaySong"></view>
     </view>
   </view>
 

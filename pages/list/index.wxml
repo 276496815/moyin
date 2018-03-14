@@ -3,15 +3,15 @@
 
     <view class="song_item" wx:for="{{ list }}">
       <view class="song_item__album">
-        <image class="sont_item__album_pic" src="http://y.gtimg.cn/music/photo_new/T002R300x300M000000bx8mM3otnEd.jpg?max_age=2592000"></image>
-        <view class="play_btn"></view>
+        <image class="sont_item__album_pic" src="{{item.img}}"></image>
+        <view class="play_btn" bindtap="onTapToPlaySong" data-src="{{item.src}}"></view>
       </view>
       <view class="song_item__con">
         <view class="song_item__detail">
             <rich-text type="h3" class="song_item__tit">{{ item.album }}</rich-text>
             <rich-text type="p" class="song_item__artist">{{ item.song }}</rich-text>
         </view>
-        <button class="mod_btn select_btn" data- bindtap="chooseSong">选择</button>
+        <button class="mod_btn select_btn" data- bindtap="chooseSong" data-src="{{item.src}}" data-img="{{item.img}}" data-song="{{item.song}}" data-id="{{item.id}}">选择</button>
       </view>
     </view>
   </view>
